@@ -12,6 +12,6 @@ end
 
 get "/" do
   client = Instagram.client(:access_token => session[:access_token])
-  @notes = client.tag_recent_media('notegraphy', {:count => 100})
+  @notes = client.tag_recent_media('bargraphy', {:count => 100})
   erb :index
 end
