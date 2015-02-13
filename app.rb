@@ -12,9 +12,6 @@ end
 
 get "/" do
   client = Instagram.client(:access_token => session[:access_token])
-  html = ""
-  for media_item in client.tag_recent_media('notegraphy', {:count => 100})
-    html << "<img src='#{media_item.images.low_resolution.url}'>"
-  end
-  html
+  @notes = client.tag_recent_media('notegraphy', {:count => 100})
+  erb :index
 end
