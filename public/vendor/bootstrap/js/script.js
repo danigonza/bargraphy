@@ -5,7 +5,7 @@ $(function(){
     };
 
     var hide = function(element){
-        element.css( "display", 'block' );
+        element.css( "display", 'none' );
     };
 
     show(current);
@@ -13,8 +13,17 @@ $(function(){
     setInterval(function(){
         var old = current;
         current = current.next();
-        show(current);
-        hide(old);
+
+        if(current.hasClass('note-element')){
+            show(current);
+            hide(old);
+        }
+        else{
+            current = $( ".note-element:first-of-type" );
+            show(current);
+            hide(old);
+
+        }
     }, 5000);
 
 });
