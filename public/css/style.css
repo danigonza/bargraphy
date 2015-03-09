@@ -1,0 +1,55 @@
+/* CSS used here will be applied after bootstrap.css */
+
+html, body { height: 100%; background-color: black;}
+
+.container-fluid {
+    overflow: hidden;
+    height: 85%;
+}
+
+.row-fluid {
+    margin-right: 0px;
+    margin-left: 0px;
+    height: 100%;
+}
+
+.half_page {
+    width: 100%;   
+    padding-left: 0px;
+    padding-right: 0px;
+    height: inherit;
+}
+
+#little_images_container {
+
+}
+
+#big_image_container {
+    display: none;
+}
+
+#big_image_container img {
+    width: 100%;
+    height: 100%;
+}
+
+.instagram_image {
+    width: 137px;
+    height: 137px;
+    float: left;
+}
+
+.bargraphy_image {
+    width: 100%;
+    height: 15%;
+    text-align: center;
+    background-color: white;
+}
+
+.bargraphy_image img{
+    height: 100%;
+}
+
+#image_container {
+    text-align: center;
+}

@@ -4,9 +4,12 @@
 		<title>Bargraphy</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<!-- Bootstrap -->
-		<link href="/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-		<link href="/vendor/bootstrap/css/style.css" rel="stylesheet">
-		<meta http-equiv="refresh" content="90">
+		
+		<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
+		<link rel="stylesheet" href="//blueimp.github.io/Gallery/css/blueimp-gallery.min.css">
+		<link rel="stylesheet" href="css/bootstrap-image-gallery.min.css">
+		<link href="css/style.css" rel="stylesheet">
+		<meta http-equiv="refresh" content="30">
 
 		<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
 		<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -18,17 +21,16 @@
 	<body>
 		<div class="bargraphy_image">
 			<img src="/bargraphy.png">
-
 		</div>
-		<div class="container">
-		<%= yield %>
+		<div class="container-fluid">
+			<div class="row row-fluid">
+				<%= yield %>
+			</div>
 		</div>
 
-
-    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="/vendor/jquery-1.9.1.min.js"></script>
-    <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="/vendor/bootstrap/js/bootstrap.min.js"></script>
-    <script src="/vendor/bootstrap/js/script.js"></script>
+    	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+		<script src="//blueimp.github.io/Gallery/js/jquery.blueimp-gallery.min.js"></script>
+		<script src="js/bootstrap-image-gallery.min.js"></script>
+		<script src="js/script.js"></script>
   </body>
 </html>

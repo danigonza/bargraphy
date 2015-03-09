@@ -11,7 +11,21 @@ Instagram.configure do |config|
 end
 
 get "/" do
-  client = Instagram.client(:access_token => session[:access_token])
-  @notes = client.tag_recent_media('bargraphy', {:count => 100})
-  erb :index
+	number_notes = 100
+  	@client = Instagram.client(:access_token => session[:access_token])
+  	@list_of_images_lists = get_instagram_images(number_notes)
+  	erb :index 
 end
+
+def get_instagram_images(num_images)
+	i = 0
+	images = []
+	max_id_tag = nil
+	while i < num_images  do
+   		images_list = @client.tag_recent_media('notegraphy', {:max_id => max_id_tag})
+   		max_id_tag = images_list.pagination[:next_max_tag_id]
+   		i = i + images_list.count
+   		images << images_list
+	end
+  	images
+end	

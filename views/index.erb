@@ -1,40 +1,12 @@
-<% @notes.each do |n| %> 
-<div class="modal img-modal note-element">
-  <div class="modal-dialog modal-lg">
-    <div class="modal-content">
-      <div class="modal-body">
-        <div class="row">
-            <div class="col-md-8 modal-image">
-                <img class="img-responsive note-image" src="<%= n.images.low_resolution.url %>">
-          	</div>
-        	<div class="col-md-4 modal-meta">
-              <div class="modal-meta-top">
-                  <div class="img-poster clearfix">
-                      <img class="img-circle" src="<%= n.user.profile_picture %>"/>
-                      <strong><a href=""><%= n.user.username %></a></strong>
-                  </div>
-                  
-                  <p style="margin:20px;"><%= n.caption.text %></p>
-
-                  <ul class="img-comment-list">
-                    <% n.comments.data.each do |c| %>
-                    <li>
-                        <div class="comment-img">
-                          <img src="<%= c.from.profile_picture %>">
-                        </div>
-                        <div class="comment-text">
-                            <strong><a href=""><%= c.from.username %></a></strong>
-                            <p><%= c.text %></p>
-                        </div>
-                    </li>
-                    <% end %>
-                </ul>
-              </div>
-          	</div>
-        </div>
-      </div>
-    </div><!-- /.modal-content -->
-  </div><!-- /.modal-dialog -->
+<div id="big_image_container" class="col-md-6 half_page">
+  <img class="instagram_image" src="https://placehold.it/612x612">
 </div>
-			<%# @html %>
-<% end %>
+
+<div id="little_images_container" class="col-md-12 half_page">
+  <% @list_of_images_lists.each do |img_l| %> 
+    <% img_l.each do |n| %> 
+      <img class="instagram_image" src="<%= n.images.standard_resolution.url %>">
+    <% end %>
+  <% end %>
+</div>
+
