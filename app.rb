@@ -3,6 +3,8 @@ require "instagram"
 
 enable :sessions
 
+NUMBER_NOTES = 100
+
 CALLBACK_URL = "http://localhost:4567/oauth/callback"
 
 Instagram.configure do |config|
@@ -11,10 +13,15 @@ Instagram.configure do |config|
 end
 
 get "/" do
-	number_notes = 100
-  	@client = Instagram.client(:access_token => session[:access_token])
-  	@list_of_images_lists = get_instagram_images(number_notes)
-  	erb :index 
+  @list = []
+  @num = NUMBER_NOTES
+  erb :index, locals: { num: NUMBER_NOTES, list_of_images_lists: @list }
+end
+
+get '/get_images' do
+  @client = Instagram.client(:access_token => session[:access_token])
+  @list_of_images_lists = get_instagram_images(@number_notes)
+  @list_of_images_lists
 end
 
 def get_instagram_images(num_images)

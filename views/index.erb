@@ -3,9 +3,15 @@
 </div>
 
 <div id="little_images_container" class="col-md-12 half_page">
-  <% @list_of_images_lists.each do |img_l| %> 
-    <% img_l.each do |n| %> 
-      <img class="instagram_image" src="<%= n.images.standard_resolution.url %>">
+  <% unless list_of_images_lists.empty? %>
+    <% list_of_images_lists.each do |img_l| %> 
+      <% img_l.each do |n| %> 
+        <img class="instagram_image image" src="<%= n.images.standard_resolution.url %>">
+      <% end %>
+    <% end %>
+  <% else %>
+    <% (0..num).each do %>
+      <img class="placeholder_image image" src="/placeholder_person.png">
     <% end %>
   <% end %>
 </div>
