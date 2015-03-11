@@ -19,9 +19,10 @@ get "/" do
 end
 
 get '/get_images' do
+  @num = NUMBER_NOTES
   @client = Instagram.client(:access_token => session[:access_token])
-  @list_of_images_lists = get_instagram_images(@number_notes)
-  @list_of_images_lists
+  @list_of_images_lists = get_instagram_images(@num)
+  erb :index, locals: { num: NUMBER_NOTES, list_of_images_lists: @list_of_images_lists }
 end
 
 def get_instagram_images(num_images)
