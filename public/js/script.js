@@ -5,6 +5,8 @@ $(function(){
 	var clientid = 'af5f708adf794ad8a5ac2b26ee0c4912';
 	var tag_name = 'notegraphy';
 	var next_url = null;
+	var interval_get_images = 1000;
+	var interval_print_image = 500;
 
 	var search_images_instagram = function(){
 		if (next_url == null) {
@@ -48,6 +50,6 @@ $(function(){
 
     search_images_instagram();
 
-    setInterval(search_images_instagram, 1000);
-    setInterval(showing_image_list,300);
+    setInterval(search_images_instagram, interval_get_images);
+    setInterval(showing_image_list, interval_print_image);
 });
