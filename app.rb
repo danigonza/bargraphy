@@ -1,6 +1,8 @@
 require "sinatra"
 require "instagram"
 
+#set :bind, '192.168.1.34'
+
 enable :sessions
 
 NUMBER_NOTES = 100
