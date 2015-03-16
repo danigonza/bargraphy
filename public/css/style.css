@@ -1,6 +1,6 @@
 /* CSS used here will be applied after bootstrap.css */
 
-html, body { width: 1920px; height: 100%; background-color: black; overflow: hidden;}
+html, body { width: auto; height: 100%; background-color: black; overflow: hidden;}
 
 .container-fluid {
     overflow: hidden;
@@ -46,7 +46,6 @@ html, body { width: 1920px; height: 100%; background-color: black; overflow: hid
 
 .bargraphy_image {
     width: 100%;
-    #height: 15%;
     text-align: center;
     background-color: white;
 }

@@ -1,7 +1,7 @@
 require "sinatra"
 require "instagram"
 
-#set :bind, '192.168.1.34'
+#set :bind, '192.168.1.133'
 
 enable :sessions
 
