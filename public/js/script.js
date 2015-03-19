@@ -17,6 +17,7 @@ $(function(){
 		else {
 			url = next_url
 		}
+		console.log('Making call to: ' + url);
 		$.ajax({
 			type: "GET",
 			dataType: "jsonp",
