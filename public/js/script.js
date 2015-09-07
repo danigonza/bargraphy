@@ -8,6 +8,7 @@ $(function(){
 	var next_url = null;
 	var interval_get_images = 5000;
 	var interval_print_image = 500;
+	var first_call = true;
 
 	var search_images_instagram = function(){
 		console.log('getting');
@@ -17,12 +18,16 @@ $(function(){
 		else {
 			url = next_url
 		}
+		console.log('Making call to: ' + url);
 		$.ajax({
 			type: "GET",
 			dataType: "jsonp",
 			cache: false,
 			url: url,
-			success: add_images_to_array
+			success: add_images_to_array,
+      		error: function (xhr, ajaxOptions, thrownError) {
+        		console.error('Error code: ' + xhr.status + '. Message: ' + xhr.responseText);
+      		}
 		});
 	};
 
@@ -31,6 +36,23 @@ $(function(){
 		console.log(response.pagination.next_max_tag_id);
 		next_url = response.pagination.next_url
 		images = images.concat(response.data);
+		//console.log(response.pagination.next_max_tag_id);
+		data = response.data;
+		if ( first_time() === true) {
+			data = data.reverse();
+		}
+		next_url = response.pagination.next_url;
+		images = images.concat(data);
+	};
+
+	var first_time = function (){
+		if ( first_call === true ){
+			result = true;
+			first_call = false;
+		} else {
+			result = false;
+		}
+		return result;
 	};
 
 	var get_element_dimensions = function(element) {
@@ -49,6 +71,8 @@ $(function(){
     	var image_id = image.id;
     	if (images_showed.indexOf(image_id) == -1) {
     		console.log(image);
+    		console.log('Showing image: ');
+    		console.log(image)
     		var image_tag = '<img class="placeholder_image image" src="'+ image.images.standard_resolution.url +'">';
     		images_container.prepend(image_tag);
     		images_showed.push(image_id);
