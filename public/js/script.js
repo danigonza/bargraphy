@@ -6,10 +6,11 @@ $(function(){
 	var clientid = 'af5f708adf794ad8a5ac2b26ee0c4912';
 	var tag_name = 'facingconnectivity';
 	var next_url = null;
-	var interval_get_images = 1000;
+	var interval_get_images = 5000;
 	var interval_print_image = 500;
 
 	var search_images_instagram = function(){
+		console.log('getting');
 		if (next_url == null) {
 			url = "https://api.instagram.com/v1/tags/" + tag_name + "/media/recent?client_id=" + clientid
 		}
@@ -26,6 +27,7 @@ $(function(){
 	};
 
 	var add_images_to_array = function(response){
+		console.log(response.pagination)
 		console.log(response.pagination.next_max_tag_id);
 		next_url = response.pagination.next_url
 		images = images.concat(response.data);
@@ -46,7 +48,7 @@ $(function(){
     var show_image = function(image){
     	var image_id = image.id;
     	if (images_showed.indexOf(image_id) == -1) {
-    		//console.log(image.images.standard_resolution.url);
+    		console.log(image);
     		var image_tag = '<img class="placeholder_image image" src="'+ image.images.standard_resolution.url +'">';
     		images_container.prepend(image_tag);
     		images_showed.push(image_id);
